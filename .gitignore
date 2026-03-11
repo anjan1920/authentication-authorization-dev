@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# environment variables
+backend/.env
+
+# notes / local files
+backend/note.txt
+
+# logs
+logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
