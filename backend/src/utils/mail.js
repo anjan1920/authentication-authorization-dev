@@ -1,7 +1,6 @@
 import Mailgen from "mailgen";
 import nodemailer from "nodemailer";
 
-
 const sendEmail = async (options) => {
   const mailGenerator = new Mailgen({
     theme: "default",
@@ -15,53 +14,45 @@ const sendEmail = async (options) => {
   const emailHtml = mailGenerator.generate(options.mailgenContent);
 
   try {
-    // 1️Create Ethereal test account
-    const testAccount = await nodemailer.createTestAccount();
-
-    // 2️Create transporter using Ethereal
     const transporter = nodemailer.createTransport({
-      host: testAccount.smtp.host,
-      port: testAccount.smtp.port,
-      secure: testAccount.smtp.secure,
+      host: "smtp-relay.brevo.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass,
+        user: process.env.BREVO_USER,
+        pass: process.env.BREVO_PASS,
       },
     });
 
     const mail = {
-      from: "MERN APP <no-reply@mernapp.com>",
+      from: '"Authentication System" <anjandas8427@gmail.com>',
       to: options.email,
       subject: options.subject,
       text: emailTextual,
       html: emailHtml,
     };
 
-    // Send mail
     const info = await transporter.sendMail(mail);
 
-    // Log preview URL
-    console.log(" Email Verification Preview URL :", nodemailer.getTestMessageUrl(info));
+    console.log("Email sent:", info.messageId);
 
   } catch (error) {
     console.error("Email sending failed:", error);
   }
 };
 
-
-
-const emailVerificationMailgenContent = (username, verficationUrl) => {
+const emailVerificationMailgenContent = (username, verificationUrl) => {
   return {
     body: {
       name: username,
-      intro: "Welcome to our App! we'are excited to have you on board.",
+      intro: "Welcome to our App! we're excited to have you on board.",
       action: {
         instructions:
           "To verify your email please click on the following button",
         button: {
           color: "#22BC66",
           text: "Verify your email",
-          link: verficationUrl,
+          link: verificationUrl,
         },
       },
       outro:
