@@ -25,7 +25,7 @@ For production-grade security and scalability features, refer to the deployment 
 
 👉 https://github.com/anjan1920/auth-system-backend
 
-The production version includes advanced real-world features such as:
+The production version includes advanced real-world features:
 
 ### 🔒 Security Enhancements
 
@@ -70,7 +70,7 @@ The production version includes advanced real-world features such as:
 ## 🔑 Authentication
 
 * User registration
-* Email verification (dev: link in terminal)
+* Email verification (dev: link shown in terminal)
 * JWT-based login
 * Access Token + Refresh Token
 * Refresh token rotation
@@ -182,16 +182,11 @@ All APIs tested using **Postman**
 
 # ⚙️ Complete Setup Guide (Development Version)
 
-This guide will help you run the project locally.
-
----
-
 ## 📁 Project Structure
 
 authentication-authorization-dev/
 │
 ├── backend/
-│   │
 │   ├── src/
 │   │   ├── controllers/
 │   │   ├── routes/
@@ -200,7 +195,6 @@ authentication-authorization-dev/
 │   │   ├── validators/
 │   │   ├── db/
 │   │   ├── utils/
-│   │   
 │   │
 │   ├── app.js
 │   ├── index.js
@@ -218,22 +212,18 @@ authentication-authorization-dev/
 
 ## 🚀 Backend Setup
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 git clone https://github.com/anjan1920/authentication-authorization-dev
 cd authentication-authorization-dev
-
----
 
 ### 2. Install Dependencies
 
 npm install
 
----
+### 3. Setup Environment Variables
 
-### 3. Environment Variables
-
-Create a `.env` file inside the `backend/` directory:
+Create `.env` inside `backend/`:
 
 PORT=5000
 
@@ -247,9 +237,7 @@ REFRESH_TOKEN_EXPIRY=10d
 
 JWT_SECRET=your_jwt_secret
 
----
-
-### 4. Run the Server
+### 4. Run Server
 
 npm run dev
 
@@ -262,26 +250,22 @@ node backend/index.js
 ## 🎨 Frontend Setup (Optional)
 
 cd frontend
-
 npm install
 
-Run Tailwind CSS:
-
+Run Tailwind:
 npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 
 ---
 
-
----
-
-## 💡 Development Notes
-
-* This is the **development version** of the project
+## 💡 Development Notes : This is the **development version** of the project
 * Email verification & password reset links are printed in the **server console**
 
 
 ---
 
+
+
+---
 
 # 👨‍💻 Author
 
